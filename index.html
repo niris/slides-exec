@@ -1,0 +1,201 @@
+<!doctype html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<link rel="manifest" href="pwa.json" />
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<title>MobiDock and friends</title>
+<style>
+.w100 img{ width: 100%;}
+.w75  img{ width: 75%;}
+.w50  img{ width: 50%;}
+.w25  img{ width: 25%;}
+.remark-container{background:black}
+.bg,.bgw{background-size: cover;}
+.bg h2{color:white;text-shadow: .1em .1em .25em black;}
+.bg .remark-code{background: rgba(42,42,42,.75)!important;}
+.remark-code{font-size:3em}
+.compact .remark-code{font-size:1em}
+blockquote{border-left: 5px solid grey;padding-left: 1em;background: lavender;font-style: oblique;}
+</style>
+<textarea id="source">
+# MobiDock and friends
+
+![](logo.png)
+
+---
+
+# Intro: Linux in CSI3104
+
+---
+
+class:bgw
+background-image: url(distrib.jpg)
+## Linux Distributions
+
+---
+
+class:bg
+background-image: url(shell.jpg)
+## Launching applications
+
+```bash
+echo hello
+apt install python
+```
+
+---
+
+class:bg
+background-image: url(files.jpg)
+## Browsing & managing filesystem
+
+```bash
+ls /
+cd $HOME
+pwd
+rm -rf /*
+```
+
+---
+
+class:bg
+background-image: url(pipe.jpg)
+## Connecting 2 programs
+
+```
+ls | grep homework
+```
+
+---
+
+class:bg
+background-image: url(script.jpg)
+## Execute script to automate task
+
+```
+if curl reru.ac.th
+then
+ echo "reru is okay"
+fi
+```
+
+---
+
+# That's was hard (I know) !
+
+.w100[![](meme.jpg)]
+
+<!--
+
+# So What's next ?
+
+"Someone" asked me:
+> Talk about Linux to my student
+
+I replied
+> There is nothing to say  
+> Linux just run programs
+
+Then I realised :
+> what *kind* of program ?  
+> *how* it run them"
+-->
+
+### I will show you what Linux can run
+
+---
+
+# Multiple way of running:
+
+### 1. Emulation
+### 2. Virtualization
+### 3. Translation
+### 4. Containerization
+
+---
+
+# Emulation:
+
+### Run program from other Architecture
+
+- ARM, x86, x64, MIPS, PowerPC
+- Example : Dolphin (GameCube/Wii), RPCS3 (PS3) ...
+
+<iframe width="600" height="315" src="https://www.youtube-nocookie.com/embed/4zM785_HI3s?t=45"></iframe>
+
+Demo Time: SNES app running on Intel x64
+---
+
+# Virtualisation
+### Run other Kernels/OS (Same arch only)
+
+.w100[![](virt.jpg)]
+Demo Time: WindowsXP on Linux
+
+---
+
+# Translation
+### Run apps from other Kernels/OS
+
+- Windows Subsystem for Linux: Run Linux Apps on Windows
+- Wine: Run Windows Apps on Linux
+- Valve Proton: Run Windows Games on Linux
+.w100[![](tesv.jpg)]
+Demo Time: PaintShopPro / Notepad++ on Linux
+
+---
+
+# Containerization
+### Run Linux App from other Linux Distribution
+
+.w100[![](anbox.jpg)]
+
+Demo : Docker
+
+---
+### Emul° / Virt° / Transl° / Dockeri°
+
+.w100[![](graph.png)]
+
+---
+
+# How Linux Container works
+
+Linux can run a binary in a **isolated zone** (container)
+- no access to your files
+- no access to the network
+
+Docker manage theses container -> demo time !
+
+.w100[![](docker.logo.png)]
+
+---
+
+<h1 style=text-align:center>Q/A</h1>
+
+<!--
+.compact[```
+docker ps # watch
+
+docker image     pull      ubuntu
+docker image     list
+
+docker container create    ubuntu
+docker container start -ai 21ecb5
+docker container exec      21ecb5 sleep 300
+# create + start + exec
+docker container run --tty --interactive 21ecb5 sleep 300
+
+```]
+
+`docker container attach 21ecb5`
+
+`docker attach`
+`docker images` List all images
+`docker run -it ubuntu bash` create a *ubuntu* container and run *bash* inside (`-it` for interactiv terminal)
+
+`docker system prune -fa` clear the docker system (force all)
+-->
+</textarea>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"></script>
+<script>var slideshow = remark.create({highlightLanguage:'bash',highlightStyle:'ir-black'});</script>
